@@ -39,6 +39,6 @@ function animateRaindrops() {
     requestAnimationFrame(animateRaindrops);
 }
 
-setInterval(spawnRaindrop, 30);
+setInterval(spawnRaindrop, 25);
 
 requestAnimationFrame(animateRaindrops);
