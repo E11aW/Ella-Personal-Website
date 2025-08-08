@@ -41,16 +41,17 @@ function animateRaindrops() {
 
 const floatingClouds = document.querySelectorAll('.floating-cloud');
 let cloudPositions = [];
+const speed = 1.75;
+const padding = window.screen.width * 0.1;
 
 function animateClouds() {
-    const speed = 1;
 
     floatingClouds.forEach((cloud, i) => {
         cloudPositions[i] -= speed;
         if (cloudPositions[i] <= -cloud.offsetWidth) {
             // loop the cloud back to the others side of the screen
             const maxX = Math.max(...cloudPositions);
-            cloudPositions[i] = maxX + cloud.offsetWidth;
+            cloudPositions[i] = maxX + cloud.offsetWidth + padding;
         }
         cloud.style.left = cloudPositions[i] + 'px';
     });
@@ -77,7 +78,7 @@ backgroundImage.onload = function () {
 
 window.addEventListener('load', () => {
     floatingClouds.forEach((cloud, i) => {
-        const startX = i * cloud.offsetWidth;
+        const startX = i * (cloud.offsetWidth + padding);
         cloud.style.left = startX + 'px';
         cloudPositions[i] = startX;
     });
