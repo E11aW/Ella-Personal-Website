@@ -3,7 +3,7 @@ html {
 }
 
 body {
-    background-image: url("Assets/foggy.jpg");
+    background-image: url("Assets/background.png");
     background-repeat: no-repeat;
     background-size: cover;
     margin: 0;
@@ -26,15 +26,45 @@ body {
 }
 
 #top-cloud {
+    opacity: 0;
     position: fixed;
-    width: 100%;
-    overflow: hidden;
+    width: 45%;
     top: 0;
+    padding-top: 1%;
     z-index: 11;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
-#long-cloud {
-    width: 100%;
+#top-cloud img {
+    max-width: 100%;
+    width: 90%;
     height: auto;
-    display: block;
+    opacity: 0.9;
+}
+
+#top-cloud h1 {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Calibri, Candara, sands-seif;
+    font-size: 58px;
+}
+
+#floating-clouds {
+    position: absolute;
+    top: 55%;
+    width: 100%;
+    /* overflow: hidden; */
+    pointer-events: none;
+}
+
+#floating-clouds img {
+    position: absolute;
+    opacity: 0.9;
+    width: 30%;
 }
