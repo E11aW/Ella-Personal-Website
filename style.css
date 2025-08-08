@@ -21,14 +21,10 @@ body {
     opacity: 0.5;
 }
 
-.clouds {
-    z-index: 10;
-}
-
 #top-cloud {
     opacity: 0;
     position: fixed;
-    width: 45%;
+    width: 42%;
     top: 0;
     padding-top: 1%;
     z-index: 11;
@@ -45,29 +41,32 @@ body {
     opacity: 0.9;
 }
 
-#top-cloud h1 {
-    text-align: center;
+.floating-cloud {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: Calibri, Candara, sands-seif;
-}
-
-h1 {
-    font-size: 50px;
-}
-
-#floating-clouds {
-    position: absolute;
-    top: 55%;
-    width: 100%;
-    /* overflow: hidden; */
-    pointer-events: none;
-}
-
-#floating-clouds img {
-    position: absolute;
-    opacity: 0.9;
+    top: 58%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 30%;
+    z-index: 15;
+}
+
+.floating-cloud img {
+    opacity: 0.9;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.cloud-text {
+    position: absolute;
+    font-family: Calibri, Candara, sans-serif;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px #a8b5d2;
+    white-space: nowrap;
+}
+
+#name {
+    font-size: 3.5rem;
+    color: #3d356a;
 }

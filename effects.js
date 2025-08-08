@@ -44,12 +44,18 @@ let cloudPositions = [];
 const speed = 1.75;
 const padding = window.screen.width * 0.1;
 
+document.querySelectorAll('.floating-cloud').forEach(cloud => {
+    const img = cloud.querySelector('img');
+    const text = cloud.querySelector('.cloud-text');
+    text.textContent = img.alt;
+})
+
 function animateClouds() {
 
     floatingClouds.forEach((cloud, i) => {
         cloudPositions[i] -= speed;
+        // loop the cloud back to the others side of the screen
         if (cloudPositions[i] <= -cloud.offsetWidth) {
-            // loop the cloud back to the others side of the screen
             const maxX = Math.max(...cloudPositions);
             cloudPositions[i] = maxX + cloud.offsetWidth + padding;
         }
