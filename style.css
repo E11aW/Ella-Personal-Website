@@ -70,3 +70,64 @@ body {
     font-size: 3.5rem;
     color: #3d356a;
 }
+
+.cloud-link {
+    display: inline-block;
+    pointer-events: auto;
+    text-decoration: none;
+    color: inherit;
+}
+
+.cloud-linke:hover .cloud-text {
+    cursor: pointer;
+    color: #3d356a;
+}
+
+/* About me specific formatting*/
+#box-container {
+    position: relative;
+    float: right;
+    height: 100%;
+    width: auto;
+    z-index: 15;
+}
+
+#box {
+    height: 100%;
+    width: 100%;
+    display: block;
+    opacity: 0.9;
+}
+
+#inner-description {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    height: 100%;
+    width: 100%;
+    padding: 70px;
+    box-sizing: border-box;
+}
+
+#self-photo {
+    width: 40%;
+    height: auto;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+#inner-description #inner-text {
+    flex-grow: 1;
+    text-align: left;
+    margin: 0;
+    font-size: 1.3rem;
+}
+
+#inner-text a {
+    color: #3d356a;
+}
