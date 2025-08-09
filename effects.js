@@ -1,5 +1,4 @@
 // Falling Raindrop Effect:
-
 const raindropsrc = "Assets/raindrop.webp";
 
 const raindrops = [];
@@ -39,32 +38,72 @@ function animateRaindrops() {
     requestAnimationFrame(animateRaindrops);
 }
 
+// Floating cloud effect
 const floatingClouds = document.querySelectorAll('.floating-cloud');
 let cloudPositions = [];
-const speed = 1.75;
-const padding = window.screen.width * 0.1;
+const cloudSpeed = 1.75;
+const cloudPadding = window.screen.width * 0.09;
+if (document.querySelectorAll('.floating-cloud').length > 0) {
 
-document.querySelectorAll('.floating-cloud').forEach(cloud => {
-    const img = cloud.querySelector('img');
-    const text = cloud.querySelector('.cloud-text');
-    text.textContent = img.alt;
-})
-
-function animateClouds() {
-
-    floatingClouds.forEach((cloud, i) => {
-        cloudPositions[i] -= speed;
-        // loop the cloud back to the others side of the screen
-        if (cloudPositions[i] <= -cloud.offsetWidth) {
-            const maxX = Math.max(...cloudPositions);
-            cloudPositions[i] = maxX + cloud.offsetWidth + padding;
-        }
-        cloud.style.left = cloudPositions[i] + 'px';
+    document.querySelectorAll('.floating-cloud').forEach(cloud => {
+        const img = cloud.querySelector('img');
+        const text = cloud.querySelector('.cloud-text');
+        text.textContent = img.alt;
     });
-    requestAnimationFrame(animateClouds);
+
+    // Cloud loop animation
+    function animateClouds() {
+        floatingClouds.forEach((cloud, i) => {
+            cloudPositions[i] -= cloudSpeed;
+            // loop the cloud back to the other side of the screen
+            if (cloudPositions[i] <= -cloud.offsetWidth) {
+                const maxX = Math.max(...cloudPositions);
+                cloudPositions[i] = maxX + cloud.offsetWidth + cloudPadding;
+            }
+            cloud.style.left = cloudPositions[i] + 'px';
+        });
+        requestAnimationFrame(animateClouds);
+    }
 }
 
+// Scrolling skills effect
+if (document.querySelectorAll('.skill').length > 0) {
+    const allSkills = document.querySelector('.all-skills');
+    let skillPositions = [];
+    const skillElements = Array.from(allSkills.children);
 
+    const skillSpeed = 0.6;
+    const skillPadding = allSkills.offsetWidth * 0.07; // matches css gap
+
+    // Setting initial skill positions
+    function initSkills() {
+        let currentX = 0;
+        skillElements.forEach((skill, i) => {
+            skill.style.position = 'absolute';
+            skill.style.left = currentX + 'px';
+            skillPositions[i] = currentX;
+            currentX += skill.offsetWidth + skillPadding;
+        });
+    }
+
+    // Skill loop animation
+    function animateSkills() {
+        const containerWidth = document.querySelector('.skill-bar').offsetWidth;
+        skillElements.forEach((skill, i) => {
+            skillPositions[i] += skillSpeed;
+            // loop the skill back to the other side of the skill bar
+            if (skillPositions[i] > containerWidth) {
+                const minPos = Math.min(...skillPositions);
+                skillPositions[i] = minPos - skill.offsetWidth - skillPadding;
+            }
+            skill.style.left = skillPositions[i] + 'px';
+        });
+
+        requestAnimationFrame(animateSkills);
+    }
+}
+
+// Fade in effect
 function fadeIn(elementOrId) {
     const element = typeof elementOrId === 'string' ? document.getElementById(elementOrId) : elementOrId;
     if (!element) return;
@@ -82,14 +121,20 @@ backgroundImage.onload = function () {
 }
 
 window.addEventListener('load', () => {
-    floatingClouds.forEach((cloud, i) => {
-        const startX = i * (cloud.offsetWidth + padding);
-        cloud.style.left = startX + 'px';
-        cloudPositions[i] = startX;
+    if (document.querySelectorAll('.floating-cloud').length > 0) {
+        floatingClouds.forEach((cloud, i) => {
+            const startX = i * (cloud.offsetWidth + cloudPadding);
+            cloud.style.left = startX + 'px';
+            cloudPositions[i] = startX;
 
-        fadeIn(cloud);
-    });
-    animateClouds();
+            fadeIn(cloud);
+        });
+        animateClouds();
+    }
+    if (document.querySelectorAll('.skill').length > 0) {
+        initSkills();
+        animateSkills();
+    }
 });
 
 setInterval(spawnRaindrop, 25);

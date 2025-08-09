@@ -44,7 +44,7 @@ body {
 
 .floating-cloud {
     opacity: 0;
-    transition: opacity 2s ease-in;
+    transition: opacity 2.2s ease-in;
     position: absolute;
     top: 58%;
     display: flex;
@@ -138,4 +138,45 @@ body {
 
 #inner-text a {
     color: #3d356a;
+}
+
+/* Project specific formatting */
+#project-cloud {
+    top: 64%;
+}
+
+.skill-bar {
+    width: 90%;
+    padding-left: 5%;
+    height: 8%;
+    position: absolute;
+    top: 51.5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#long-box {
+    width: 100%;
+    height: auto;
+    display: block;
+    opacity: 0.9;
+    /* position: absolute; */
+    z-index: 5;
+}
+
+.all-skills {
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 7%;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.skill {
+    font-size: 1rem;
+    color: #e9e9e8;
 }
