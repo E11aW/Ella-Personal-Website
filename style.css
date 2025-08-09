@@ -71,6 +71,11 @@ body {
     color: #3d356a;
 }
 
+#project-text {
+    font-size: 1.6rem;
+    white-space: normal;
+}
+
 .cloud-link {
     display: inline-block;
     pointer-events: auto;
