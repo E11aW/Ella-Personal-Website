@@ -65,11 +65,10 @@ function animateClouds() {
 }
 
 
-function fadeIn(elementID) {
-    const element = document.getElementById(elementID);
-    let opacity = 0;
-    element.style.opacity = 0;
-    element.style.transition = 'opacity 2s ease-in';
+function fadeIn(elementOrId) {
+    const element = typeof elementOrId === 'string' ? document.getElementById(elementOrId) : elementOrId;
+    if (!element) return;
+
     requestAnimationFrame(() => {
         element.style.opacity = 0.9;
     });
@@ -87,6 +86,8 @@ window.addEventListener('load', () => {
         const startX = i * (cloud.offsetWidth + padding);
         cloud.style.left = startX + 'px';
         cloudPositions[i] = startX;
+
+        fadeIn(cloud);
     });
     animateClouds();
 });

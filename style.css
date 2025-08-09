@@ -23,6 +23,7 @@ body {
 
 #top-cloud {
     opacity: 0;
+    transition: opacity 2s ease-in;
     position: fixed;
     width: 42%;
     top: 0;
@@ -42,6 +43,8 @@ body {
 }
 
 .floating-cloud {
+    opacity: 0;
+    transition: opacity 2s ease-in;
     position: absolute;
     top: 58%;
     display: flex;
