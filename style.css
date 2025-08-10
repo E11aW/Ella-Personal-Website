@@ -14,11 +14,32 @@ body {
 
 .raindrop {
     position: absolute;
-    height: 7%;
+    height: 8%;
     width: auto;
-    pointer-events: none;
     z-index: 1;
     opacity: 0.5;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.raindrop.collected {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+}
+
+#score-display {
+    position: fixed;
+    top: 1%;
+    left: 85%;
+    font-family: Calibri, Candara, sans-serif;
+    font-size: 2.5rem;
+    color: #3d356a;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
+    z-index: 25;
+    user-select: none;
 }
 
 #top-cloud {
@@ -33,6 +54,7 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    user-select: none;
 }
 
 #top-cloud img {
@@ -52,6 +74,8 @@ body {
     align-items: center;
     width: 30%;
     z-index: 15;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
 .floating-cloud img {
@@ -59,6 +83,7 @@ body {
     width: 100%;
     height: auto;
     display: block;
+    -webkit-user-drag: none;
 }
 
 .cloud-text {
@@ -98,6 +123,7 @@ body {
     height: 100%;
     width: auto;
     z-index: 15;
+    user-select: none;
 }
 
 #box {
@@ -142,7 +168,7 @@ a {
 }
 
 /* Project specific formatting */
-#project-cloud {
+#subpage-cloud {
     top: 64%;
 }
 
@@ -160,6 +186,7 @@ a {
     position: relative;
     opacity: 0;
     transition: opacity 3s ease-in;
+    user-select: none;
 }
 
 #long-box {
@@ -190,6 +217,32 @@ a {
 }
 
 .skill {
-    font-size: 1rem;
+    font-family: Calibri, Candara, sans-serif;
+    font-size: 1.3rem;
     color: #e9e9e8;
+}
+
+/* Social specific formatting */
+.email-bar {
+    width: 90%;
+    height: 8%;
+    position: absolute;
+    top: 51.5%;
+    left: 50%;
+    transform: translate(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    opacity: 0;
+    transition: opacity 3s ease-in;
+    user-select: none;
+}
+
+.email-bar h2 {
+    font-family: Calibri, Candara, sans-serif;
+    font-size: 2rem;
+    color: #e9e9e8;
+    z-index: 30;
 }

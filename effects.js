@@ -1,7 +1,12 @@
 // Falling Raindrop Effect:
 const raindropsrc = "Assets/raindrop.webp";
-
 const raindrops = [];
+
+let score = 0;
+
+function updateScoreDsiplay() {
+    document.getElementById('score-display').textContent = `Score: ${score}`;
+}
 
 function spawnRaindrop() {
     const droplet = document.createElement('img');
@@ -9,15 +14,28 @@ function spawnRaindrop() {
     droplet.className = "raindrop";
 
     const drop = {
-        this: droplet,
+        el: droplet,
         x: Math.random() * window.innerWidth,
         y: 0,
         velocity: 0,
-        gravity: Math.random() * (0.4 - 0.1) + 0.1
+        gravity: Math.random() * (0.4 - 0.08) + 0.08
     };
 
     droplet.style.left = drop.x + 'px';
     droplet.style.top = drop.y + 'px';
+
+    droplet.addEventListener('click', () => {
+        score++;
+        updateScoreDsiplay();
+
+        // fade droplet out before removing
+        droplet.classList.add('collected');
+        setTimeout(() => {
+            droplet.remove();
+            const index = raindrops.indexOf(drop);
+            if (index > -1) raindrops.splice(index, 1);
+        }, 300);
+    });
 
     document.body.appendChild(droplet);
     raindrops.push(drop);
@@ -28,10 +46,10 @@ function animateRaindrops() {
         const currentDroplet = raindrops[i];
         currentDroplet.velocity += currentDroplet.gravity;
         currentDroplet.y += currentDroplet.velocity;
-        currentDroplet.this.style.top = currentDroplet.y + 'px';
+        currentDroplet.el.style.top = currentDroplet.y + 'px';
 
         if (currentDroplet.y > window.innerHeight) {
-            currentDroplet.this.remove();
+            currentDroplet.el.remove();
             raindrops.splice(i, 1);
         }
     }
@@ -137,8 +155,13 @@ window.addEventListener('load', () => {
         initSkills();
         animateSkills();
     }
+    const emailBar = document.querySelector('.email-bar');
+    if (emailBar) {
+        fadeIn(emailBar);
+    }
 });
 
-setInterval(spawnRaindrop, 25);
+// OG: 25 interval, 7% size, change the speed
+setInterval(spawnRaindrop, 36);
 
 requestAnimationFrame(animateRaindrops);

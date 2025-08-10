@@ -1,0 +1,94 @@
+html {
+    overflow: hidden;
+}
+
+body {
+    background-image: url("Assets/background.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.raindrop {
+    position: absolute;
+    height: 13%;
+    width: auto;
+    z-index: 1;
+    opacity: 0.6;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+.raindrop.collected {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+}
+
+#score-display {
+    position: fixed;
+    top: 1%;
+    left: 85%;
+    font-family: Calibri, Candara, sans-serif;
+    font-size: 2.5rem;
+    color: #3d356a;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px black;
+    z-index: 25;
+    user-select: none;
+}
+
+#instructions {
+    position: fixed;
+    top: 95%;
+    left: 1%;
+    font-family: Calibri, Candara, sans-serif;
+    font-size: 1.6rem;
+    color: #3d356a;
+    z-index: 25;
+    user-select: none;
+}
+
+#bold-instructions {
+    font-weight: bold;
+}
+
+#top-cloud {
+    opacity: 0;
+    transition: opacity 2s ease-in;
+    position: fixed;
+    width: 42%;
+    top: 0;
+    padding-top: 1%;
+    z-index: 11;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
+#top-cloud img {
+    max-width: 100%;
+    width: 90%;
+    height: auto;
+    opacity: 0.9;
+}
+
+.cloud-text {
+    position: absolute;
+    font-family: Calibri, Candara, sans-serif;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px #a8b5d2;
+    white-space: nowrap;
+}
+
+#name {
+    font-size: 3.5rem;
+    color: #3d356a;
+}
