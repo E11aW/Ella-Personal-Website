@@ -132,6 +132,8 @@ window.addEventListener('load', () => {
         animateClouds();
     }
     if (document.querySelectorAll('.skill').length > 0) {
+        const skillBar = document.querySelector('.skill-bar');
+        fadeIn(skillBar);
         initSkills();
         animateSkills();
     }
