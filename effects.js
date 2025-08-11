@@ -84,6 +84,24 @@ if (document.querySelectorAll('.floating-cloud').length > 0) {
     }
 }
 
+// Centering bar based on surrounding clouds
+function centerBar() {
+    const topCloud = document.getElementById('top-cloud');
+    const floatingClouds = document.getElementById('subpage-cloud');
+    const bar = document.querySelector('.bar');
+
+    if (!topCloud || !floatingClouds || !bar) return;
+
+    const topCloudBottom = topCloud.getBoundingClientRect().bottom;
+    const floatingCloudsTop = floatingClouds.getBoundingClientRect().top;
+
+    const availableSpace = floatingCloudsTop - topCloudBottom;
+    const centerY = topCloudBottom + (availableSpace / 2);
+
+    // Update bar position
+    bar.style.top = (centerY - bar.offsetHeight / 2) + 'px';
+}
+
 // Scrolling skills effect
 if (document.querySelectorAll('.skill').length > 0) {
     const allSkills = document.querySelector('.all-skills');
@@ -151,6 +169,7 @@ window.addEventListener('load', () => {
     }
     const bar = document.querySelector('.bar');
     if (bar) {
+        centerBar();
         fadeIn(bar);
     }
     if (document.querySelectorAll('.skill').length > 0) {
@@ -162,3 +181,5 @@ window.addEventListener('load', () => {
 setInterval(spawnRaindrop, 36);
 
 requestAnimationFrame(animateRaindrops);
+
+window.addEventListener('resize', centerBar);
