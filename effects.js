@@ -106,7 +106,7 @@ if (document.querySelectorAll('.skill').length > 0) {
 
     // Skill loop animation
     function animateSkills() {
-        const containerWidth = document.querySelector('.skill-bar').offsetWidth;
+        const containerWidth = document.querySelector('.bar').offsetWidth;
         skillElements.forEach((skill, i) => {
             skillPositions[i] += skillSpeed;
             // loop the skill back to the other side of the skill bar
@@ -149,19 +149,16 @@ window.addEventListener('load', () => {
         });
         animateClouds();
     }
+    const bar = document.querySelector('.bar');
+    if (bar) {
+        fadeIn(bar);
+    }
     if (document.querySelectorAll('.skill').length > 0) {
-        const skillBar = document.querySelector('.skill-bar');
-        fadeIn(skillBar);
         initSkills();
         animateSkills();
     }
-    const emailBar = document.querySelector('.email-bar');
-    if (emailBar) {
-        fadeIn(emailBar);
-    }
 });
 
-// OG: 25 interval, 7% size, change the speed
 setInterval(spawnRaindrop, 36);
 
 requestAnimationFrame(animateRaindrops);
